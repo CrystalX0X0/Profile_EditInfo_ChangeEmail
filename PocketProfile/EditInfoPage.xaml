@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PocketProfile.EditInfoPage"
+             Title="Edit Info"
+             BackgroundColor="#2C2C2E">
+
+    <Grid VerticalOptions="FillAndExpand"
+          HorizontalOptions="FillAndExpand"
+          Padding="30">
+
+        <StackLayout Spacing="20"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     WidthRequest="300">
+
+            <Label Text="Edit your name"
+                   TextColor="White"
+                   FontFamily="Roboto_SemiBold"
+                   FontSize="24"
+                   HorizontalOptions="Center" />
+
+            <!-- First Name Entry with Rounded Corners and Proper Padding -->
+            <Frame CornerRadius="25"
+                   Padding="10,5"
+                   BackgroundColor="#3A3A3C"
+                   HasShadow="False"
+                   WidthRequest="280"
+                   HeightRequest="50">
+                <Entry x:Name="FirstNameEntry"
+                       Placeholder="First Name"
+                       FontFamily="Roboto"
+                       BackgroundColor="Transparent"
+                       TextColor="White"
+                       PlaceholderColor="#AAAAAA"
+                       VerticalOptions="Center"/>
+            </Frame>
+
+            <!-- Last Name Entry with Rounded Corners and Proper Padding -->
+            <Frame CornerRadius="25"
+                   Padding="10,5"
+                   BackgroundColor="#3A3A3C"
+                   HasShadow="False"
+                   WidthRequest="280"
+                   HeightRequest="50">
+                <Entry x:Name="LastNameEntry"
+                       Placeholder="Last Name"
+                       FontFamily="Roboto"
+                       BackgroundColor="Transparent"
+                       TextColor="White"
+                       PlaceholderColor="#AAAAAA"
+                       VerticalOptions="Center"/>
+            </Frame>
+
+            <!-- Save Button with Rounded Corners -->
+            <Button Text="Save"
+                    BackgroundColor="Gold"
+                    TextColor="Black"
+                    FontFamily="Roboto_SemiBold"
+                    CornerRadius="22"
+                    WidthRequest="280"
+                    HeightRequest="50"
+                    Clicked="OnSaveClicked"
+                    HorizontalOptions="Center" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

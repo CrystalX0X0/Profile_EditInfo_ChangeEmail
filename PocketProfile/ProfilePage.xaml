@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="PocketProfile.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#1C1C1E"
+    Title="Profile">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+
+            <!-- Avatar with circular yellow border -->
+            <Frame Padding="5"
+                   CornerRadius="100"
+                   BackgroundColor="Gold"
+                   HasShadow="False"
+                   HorizontalOptions="Center">
+                <Image Source="profilepic.jpg"
+                       HeightRequest="100"
+                       WidthRequest="100"
+                       Aspect="AspectFill">
+                    <Image.Clip>
+                        <EllipseGeometry Center="50,50"
+                                         RadiusX="50"
+                                         RadiusY="50"/>
+                    </Image.Clip>
+                </Image>
+            </Frame>
+
+            <!-- User Name -->
+            <Label Text="Crystal"
+                   FontFamily="Roboto_SemiBold"
+                   FontSize="30"
+                   HorizontalOptions="Center"
+                   TextColor="White"/>
+
+            <!-- Buttons -->
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         Spacing="10">
+                <Frame BackgroundColor="#323232"
+                       CornerRadius="30"
+                       HeightRequest="30"
+                       WidthRequest="120"
+                       HasShadow="False"
+                       Padding="0">
+                    <Label Text="krystalxoxo"
+                           FontFamily="Roboto_SemiBold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="White"
+                           FontSize="12"/>
+                </Frame>
+                <Frame BackgroundColor="#323232"
+                       CornerRadius="30"
+                       HeightRequest="30"
+                       WidthRequest="120"
+                       HasShadow="False"
+                       Padding="0">
+                    <Label Text="Edit Info"
+                           FontFamily="Roboto_SemiBold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="White"
+                           FontSize="12"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnEditInfoTapped" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </StackLayout>
+            
+            
+
+            <!-- Invite Card -->
+            <Frame BackgroundColor="#474747"
+                   CornerRadius="20"
+                   HasShadow="False"
+                   Padding="10"
+                   HeightRequest="80"
+                   WidthRequest="360"
+                   HorizontalOptions="Center">
+                <Grid ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Avatar -->
+                    <Frame Grid.Column="0"
+                           HasShadow="False"
+                           Padding="3"
+                           BackgroundColor="Gold"
+                           HeightRequest="60"
+                           WidthRequest="60"
+                           CornerRadius="30">
+                        <Image Source="profilepic.jpg"
+                               HeightRequest="54"
+                               WidthRequest="54"
+                               Aspect="AspectFill">
+                            <Image.Clip>
+                                <EllipseGeometry Center="27,27"
+                                                 RadiusX="27"
+                                                 RadiusY="27" />
+                            </Image.Clip>
+                        </Image>
+                    </Frame>
+
+                    <!-- Text -->
+                    <StackLayout Grid.Column="1"
+                                 Orientation="Vertical"
+                                 VerticalOptions="Center">
+                        <Label Text="Invite friends to Locket!"
+                               FontFamily="Roboto_SemiBold"
+                               FontSize="16"
+                               TextColor="White"/>
+                        <Label Text="locket.cam/krystalxoxo"
+                               FontFamily="Roboto_SemiBold"
+                               FontSize="14"
+                               TextColor="White"/>
+                    </StackLayout>
+
+                    <!-- Share Icon -->
+                    <Frame Grid.Column="2"
+                           HeightRequest="40"
+                           WidthRequest="40"
+                           BackgroundColor="#727272"
+                           CornerRadius="30"
+                           Padding="8"
+                           HasShadow="False"
+                           VerticalOptions="Center">
+                        <Image Source="share_icon.png"
+                               Aspect="AspectFit"/>
+                    </Frame>
+
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnInviteTapped"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <!-- Widget Setup Section -->
+            <Label Text="Widget Setup"
+                   FontFamily="Roboto_SemiBold"
+                   TextColor="#8A8A8A"/>
+
+            <Frame BackgroundColor="#474747"
+                   CornerRadius="20"
+                   HasShadow="False"
+                   Padding="0"
+                   WidthRequest="360">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Row 1 -->
+                    <Grid Grid.Row="0"
+                          Padding="10">
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="10">
+                            <Frame BackgroundColor="White"
+                                   CornerRadius="5"
+                                   HeightRequest="30"
+                                   WidthRequest="30"
+                                   HasShadow="False">
+                                <Image Source="addwidget.png"
+                                       HeightRequest="20"
+                                       WidthRequest="20"
+                                       Aspect="AspectFit"/>
+                            </Frame>
+                            <Label Text="Add the Widget"
+                                   FontFamily="Roboto_SemiBold"
+                                   FontSize="14"
+                                   TextColor="White"
+                                   VerticalOptions="Center" />
+                        </StackLayout>
+                        <Image Source="rightarrow.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               HorizontalOptions="End" />
+                    </Grid>
+
+                    <BoxView Grid.Row="1"
+                             HeightRequest="1"
+                             BackgroundColor="Black" />
+
+                    <!-- Row 2 -->
+                    <Grid Grid.Row="2"
+                          Padding="10">
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="10">
+                            <Frame BackgroundColor="White"
+                                   CornerRadius="35"
+                                   HeightRequest="30"
+                                   WidthRequest="30"
+                                   HasShadow="False">
+                                <Image Source="widgettutorial.png"
+                                       HeightRequest="20"
+                                       WidthRequest="20"
+                                       Aspect="AspectFit"/>
+                            </Frame>
+                            <Label Text="Widget Tutorial"
+                                   FontFamily="Roboto_SemiBold"
+                                   FontSize="14"
+                                   TextColor="White"
+                                   VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Image Source="rightarrow.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               HorizontalOptions="End"/>
+                    </Grid>
+                </Grid>
+            </Frame>
+
+            <!-- Customize Section -->
+            <Label Text="Customize"
+                   FontFamily="Roboto_SemiBold"
+                   TextColor="#8A8A8A" />
+
+            <Frame BackgroundColor="#474747"
+                   CornerRadius="20"
+                   HasShadow="False"
+                   Padding="10"
+                   WidthRequest="360"
+                   HeightRequest="50">
+                <StackLayout Orientation="Horizontal"
+                             Spacing="10"
+                             VerticalOptions="Center">
+                    <Image Source="streak.png"
+                           HeightRequest="20"
+                           WidthRequest="20"
+                           Aspect="AspectFit"
+                           VerticalOptions="Center" />
+                    <Label Text="Streak on widget"
+                           FontFamily="Roboto_SemiBold"
+                           FontSize="14"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           HorizontalOptions="StartAndExpand" />
+                </StackLayout>
+                
+            </Frame>
+
+            <!-- General Section -->
+            <Label Text="General"
+                   FontFamily="Roboto_SemiBold"
+                   TextColor="#8A8A8A"/>
+
+            <Frame BackgroundColor="#474747"
+                   CornerRadius="20"
+                   HasShadow="False"
+                   Padding="0"
+                   WidthRequest="360">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Change Email -->
+                    <Grid Grid.Row="0" Padding="10">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnChangeEmailTapped" />
+                        </Grid.GestureRecognizers>
+
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image Source="email.png"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   Aspect="AspectFit"/>
+                            <Label Text="Change email address"
+                                    FontFamily="Roboto_SemiBold"
+                                   FontSize="14"
+                                   TextColor="White"/>
+                        </StackLayout>
+
+                        <Image Source="rightarrow.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               HorizontalOptions="End"/>
+                    </Grid>
+
+                    <BoxView Grid.Row="1"
+                             HeightRequest="1"
+                             BackgroundColor="Black"/>
+
+
+                    <!-- Suggestion -->
+                    <Grid Grid.Row="2"
+                          Padding="10">
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="10">
+                            <Image Source="suggestion.png"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   Aspect="AspectFit"/>
+                            <Label Text="Make a suggestion"
+                                   FontFamily="Roboto_SemiBold"
+                                   FontSize="14"
+                                   TextColor="White"/>
+                        </StackLayout>
+                        <Image Source="rightarrow.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               HorizontalOptions="End"/>
+                    </Grid>
+
+                    <BoxView Grid.Row="3"
+                             HeightRequest="1"
+                             BackgroundColor="Black"/>
+
+                    <!-- Report Problem -->
+                    <Grid Grid.Row="4"
+                          Padding="10">
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="10">
+                            <Frame BackgroundColor="White"
+                                   CornerRadius="15"
+                                   HeightRequest="30"
+                                   WidthRequest="30"
+                                   HasShadow="False">
+                                <Image Source="report.png"
+                                       HeightRequest="20"
+                                       WidthRequest="20"
+                                       Aspect="AspectFit" />
+                            </Frame>
+                            <Label Text="Report a problem"
+                                   FontFamily="Roboto_SemiBold"
+                                   FontSize="14" TextColor="White"
+                                   VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Image Source="rightarrow.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               HorizontalOptions="End" />
+                    </Grid>
+                </Grid>
+            </Frame>
+
+            <!-- Privacy -->
+            <Label Text="Privacy and safety"
+                   FontFamily="Roboto_SemiBold"
+                   TextColor="#8A8A8A" />
+
+            <Frame BackgroundColor="#474747"
+                   CornerRadius="20"
+                   HasShadow="False"
+                   Padding="10"
+                   WidthRequest="360"
+                   HeightRequest="50"
+                   HorizontalOptions="Center">
+                <Grid ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Left: Icon and Label -->
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="10"
+                                 VerticalOptions="Center"
+                                 Grid.Column="0">
+                        <Image Source="visibility.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               Aspect="AspectFit"
+                               VerticalOptions="Center" />
+                        <Label Text="Account visibility"
+                               FontFamily="Roboto_SemiBold"
+                               FontSize="14"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               HorizontalOptions="StartAndExpand" />
+                    </StackLayout>
+
+                    <!-- Right: Arrow Icon -->
+                    <Image Source="rightarrow.png"
+                           HeightRequest="20"
+                           WidthRequest="20"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           Grid.Column="1" />
+                </Grid>
+            </Frame>
+
+            <Label Text="About Pocket"
+                   FontFamily="Roboto_SemiBold"
+                   TextColor="#8A8A8A" />
+
+            <Frame BackgroundColor="#474747"
+                   CornerRadius="20"
+                   HasShadow="False"
+                   Padding="0"
+                   WidthRequest="360">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Rating -->
+                    <Grid Grid.Row="0"
+                          Padding="10">
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="10">
+                            <Image Source="rate.png"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   Aspect="AspectFit"/>
+                            <Label Text="Rate Locket"
+                                   FontFamily="Roboto_SemiBold"
+                                   FontSize="14"
+                                   TextColor="White"/>
+                        </StackLayout>
+                        <Image Source="rightarrow.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               HorizontalOptions="End"/>
+                    </Grid>
+
+                    <BoxView Grid.Row="1"
+                             HeightRequest="1"
+                             BackgroundColor="Black"/>
+
+                    <!-- Suggestion -->
+                    <Grid Grid.Row="2"
+                          Padding="10">
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="10">
+                            <Image Source="terms.png"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   Aspect="AspectFit"/>
+                            <Label Text="Terms of Service"
+                                   FontFamily="Roboto_SemiBold"
+                                   FontSize="14"
+                                   TextColor="White"/>
+                        </StackLayout>
+                        <Image Source="rightarrow.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               HorizontalOptions="End"/>
+                    </Grid>
+
+                    <BoxView Grid.Row="3"
+                             HeightRequest="1"
+                             BackgroundColor="Black"/>
+
+                    <!-- Report Problem -->
+                    <Grid Grid.Row="4"
+                          Padding="10">
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="10">
+                            <Image Source="privacy.png"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   Aspect="AspectFit"/>
+                            <Label Text="Privacy Policy"
+                                   FontFamily="Roboto_SemiBold"
+                                   FontSize="14"
+                                   TextColor="White"/>
+                        </StackLayout>
+                        <Image Source="rightarrow.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               HorizontalOptions="End" />
+                    </Grid>
+                </Grid>
+            </Frame>
+
+            <Label Text="About Pocket"
+                   FontFamily="Roboto_SemiBold"
+                   TextColor="#8A8A8A" />
+
+            <Frame BackgroundColor="#474747"
+                   CornerRadius="20"
+                   HasShadow="False"
+                   Padding="0"
+                   WidthRequest="360">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Suggestion -->
+                    <Grid Grid.Row="2"
+                          Padding="10">
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="10">
+                            <Image Source="logout.png"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   Aspect="AspectFit"/>
+                            <Label Text="Sign out"
+                                   FontFamily="Roboto_SemiBold"
+                                   FontSize="14"
+                                   TextColor="White"/>
+                        </StackLayout>
+                        <Image Source="rightarrow.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               HorizontalOptions="End"/>
+                    </Grid>
+
+                    <BoxView Grid.Row="3"
+                             HeightRequest="1"
+                             BackgroundColor="Black"/>
+
+                    <!-- Report Problem -->
+                    <Grid Grid.Row="4"
+                          Padding="10">
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="10">
+                            <Image Source="delete.png"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   Aspect="AspectFit"/>
+                            <Label Text="Delete account"
+                                   FontFamily="Roboto_SemiBold"
+                                   FontSize="14"
+                                   TextColor="#ff3131"/>
+                        </StackLayout>
+                        <Image Source="rightarrow.png"
+                               HeightRequest="20"
+                               WidthRequest="20"
+                               HorizontalOptions="End" />
+                    </Grid>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
